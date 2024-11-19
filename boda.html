@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda Luis y Cris</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Titillium Web', sans-serif;
+            background: url('fondo-boda.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+            font-size: 3.5em; /* Aumenté el tamaño de la fuente */
+            font-weight: bold; /* Hice la fuente más gruesa */
+            color: #fff; /* Dejé el texto blanco */
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7); /* Añadí sombra para que resalte más */
+        }
+        form {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 30px;
+            display: inline-block;
+            width: 90%;
+            max-width: 600px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, button {
+            padding: 10px;
+            font-size: 1em;
+            width: 100%;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Boda Luis y Cris</h1>
+    <div class="form-container">
+        <form action="https://script.google.com/macros/s/AKfycbwy6QKbxOeFTJ2pr_RTkG5gp_tijmKwZcDsj33QOTpmAGqLROFN4RBtLuUMWRaDgsfQ2A/exec" method="POST">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="direccion">Dirección postal completa:</label>
+            <input type="text" id="direccion" name="direccion" required>
+
+            <label for="asistencia">¿Podrás acompañarnos en nuestro día?</label>
+            <select id="asistencia" name="asistencia" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Sí, por supuesto">Sí, por supuesto</option>
+                <option value="No podré asistir, lo siento">No podré asistir, lo siento</option>
+            </select>
+
+            <div id="autobus-container" style="display: none;">
+                <label for="autobus-ida">¿Necesitarás autobús desde la Iglesia al lugar de la celebración?</label>
+                <select id="autobus-ida" name="autobus-ida">
+                    <option value="">Selecciona una opción</option>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="autobus-vuelta">¿Necesitarás autobús de regreso desde el Palacio de Valdesoto a Oviedo?</label>
+                <select id="autobus-vuelta" name="autobus-vuelta">
+                    <option value="">Selecciona una opción</option>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="necesidades">¿Alguna necesidad especial? (Alergias, intolerancias, vegetariano…)</label>
+                <input type="text" id="necesidades" name="necesidades">
+            </div>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        const asistenciaSelect = document.getElementById('asistencia');
+        const autobusContainer = document.getElementById('autobus-container');
+        const necesidadesInput = document.getElementById('necesidades');
+
+        asistenciaSelect.addEventListener('change', () => {
+            if (asistenciaSelect.value === 'Sí, por supuesto') {
+                autobusContainer.style.display = 'block';
+            } else {
+                autobusContainer.style.display = 'none';
+                document.getElementById('autobus-ida').value = "No";
+                document.getElementById('autobus-vuelta').value = "No";
+                necesidadesInput.value = "No";
+            }
+        });
+    </script>
+</body>
+</html>
